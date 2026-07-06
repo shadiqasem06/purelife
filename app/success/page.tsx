@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FiCheck } from "react-icons/fi";
@@ -10,6 +10,14 @@ import { useCart } from "../context/cart-context";
 import { supabase } from "@/lib/supabase";
 
 export default function SuccessPage() {
+  return (
+    <Suspense fallback={null}>
+      <SuccessContent />
+    </Suspense>
+  );
+}
+
+function SuccessContent() {
   const { lang } = useLanguage();
   const t = translations[lang];
   const { updateCartCount } = useCart();
