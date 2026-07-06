@@ -23,4 +23,6 @@ export async function PATCH(
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Admin order update error:", err);
-    return NextResponse.json({ error: "Failed to update
+    return NextResponse.json({ error: "Failed to update order" }, { status: 500 });
+  }
+}
